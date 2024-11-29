@@ -8,7 +8,7 @@ function User({ name }) {
   return (
     <Container>
       <div className='card'>
-        <h3>{name || 'No Name Provided!'}</h3>
+        <h3>{name?.toUpperCase() || 'No Name Provided!'}</h3>
       </div>
     </Container>
   );
