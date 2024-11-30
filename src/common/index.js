@@ -1,3 +1,5 @@
+import { v6 as uuidv6 } from 'uuid';
+
 export const profileData = {
   id: 1,
   name: 'Leanne Graham',
@@ -21,3 +23,5 @@ export const profileData = {
     bs: 'harness real-time e-markets',
   },
 };
+
+export const uid = () => uuidv6();

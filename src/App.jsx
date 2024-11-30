@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import Welcome from './components/Welcome';
 import User from './components/User';
-import { profileData } from './common/index';
+import { profileData, uid } from './common/index';
 import Container from './components/Container';
 import { useDebounce } from './hooks/useDebounce';
+import Button from './components/Button';
 
 function App() {
   const [profile, setUserProfile] = useState({});
@@ -20,10 +21,14 @@ function App() {
   }, []);
 
   const handelInputChange = (e) => setTerms(e.target.value);
+  const createRecord = () => console.log('generate uuid - ', uid());
+  const deleteProfile = (profileId) => {
+    console.log('to be receive from child-comp -', profileId);
+  };
 
   return (
     <>
-      <Welcome />
+      <Welcome sendProfileId={deleteProfile} />
       {/* props destructuring  */}
       <User {...profile} />
       <Container>
@@ -36,6 +41,10 @@ function App() {
           />
           <br />
           <span>{debouncedTerm}</span>
+        </div>
+        <div className='form-group'>
+          <Button label='Create record' handelClick={createRecord} />
+          <br />
         </div>
       </Container>
     </>
